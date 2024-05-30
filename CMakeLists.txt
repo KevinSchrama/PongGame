@@ -16,6 +16,11 @@ add_executable(PongGame main.cpp
         Game/Vec2.h
         Game/constants.h
 )
-include_directories("/usr/include/SDL2")
+
+find_package( OpenCV REQUIRED )
+include_directories(${OpenCV_INCLUDE_DIRS})
+target_link_libraries(PongGame ${OpenCV_LIBS})
+
+include_directories("/usr/local/include/SDL2")
 target_link_libraries(PongGame "/usr/lib/x86_64-linux-gnu/libSDL2.so")
 target_link_libraries(PongGame "/usr/lib/x86_64-linux-gnu/libSDL2_ttf.so")

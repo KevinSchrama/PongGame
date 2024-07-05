@@ -23,7 +23,7 @@ int main() {
 
     Mat image;
     Mat hsv;
-    VideoCapture cap(1);//Declaring an object to capture stream of frames from default camera//
+    VideoCapture cap(0);//Declaring an object to capture stream of frames from default camera//
     if (!cap.isOpened()){ //This section prompt an error message if no video stream is found//
         std::cout << "No video stream detected" << std::endl;
         system("pause");

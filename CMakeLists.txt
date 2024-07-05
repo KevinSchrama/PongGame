@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.27)
+cmake_minimum_required(VERSION 3.25)
 project(PongGame)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -22,5 +22,5 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 target_link_libraries(PongGame ${OpenCV_LIBS})
 
 include_directories("/usr/include/SDL2")
-target_link_libraries(PongGame "/usr/lib/x86_64-linux-gnu/libSDL2.so")
-target_link_libraries(PongGame "/usr/lib/x86_64-linux-gnu/libSDL2_ttf.so")
+target_link_libraries(PongGame "/usr/lib/aarch64-linux-gnu/libSDL2.so")
+target_link_libraries(PongGame "/usr/lib/aarch64-linux-gnu/libSDL2_ttf.so")

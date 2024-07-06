@@ -14,6 +14,13 @@
 using namespace cv;
 using namespace std;
 
+struct controlPoints {
+    int centroid1x;
+    int centroid1y;
+    int centroid2x;
+    int centroid2y;
+};
+
 /*
 int main() {
     // Game pongGame;
@@ -87,7 +94,7 @@ int main() {
 
 mutex mtx;
 queue<Mat> queueImage;
-queue<int> queueYPosition;
+queue<controlPoints> queuePosition;
 int quit;
 int debug;
 
@@ -101,7 +108,6 @@ auto readQueue(queue<auto>* queueRead){
 }
 
 void captureVideo(){
-    int i = 0;
     Mat image;
     VideoCapture cap(0);
 
@@ -117,12 +123,11 @@ void captureVideo(){
     while(!quit){
         cap >> image;
         Mat smaller;
-        resize(image, smaller, Size(720, 1280), INTER_LINEAR);
+        resize(image, smaller, Size(1280, 720), INTER_LINEAR);
         mtx.lock();
-        cout << "Capture video " << i << "| " << smaller.cols << "x" << smaller.rows << endl;
+        cout << "Capture video | " << smaller.cols << "x" << smaller.rows << endl;
         mtx.unlock();
         queueImage.push(smaller);
-        i++;
         usleep(33000);
     }
 
@@ -130,7 +135,6 @@ void captureVideo(){
 }
 
 void processVideo(){
-    int i = 0;
     Mat image;
     Mat hsv;
     Mat mask;
@@ -155,38 +159,56 @@ void processVideo(){
 
         double maxArea = 0;
         int maxAreaIdx = -1;
+        int secondAreaIdx = -1;
         for (size_t i = 0; i < contours.size(); i++) {
             double area = contourArea(contours[i]);
             if (area > maxArea) {
                 maxArea = area;
+                secondAreaIdx = maxAreaIdx;
                 maxAreaIdx = i;
             }
         }
 
-        Point2f centroid(-1, -1);
+        // Find center of biggest contour
+        Point2f centroid1(-1, -1);
         if (maxAreaIdx != -1) {
-            Moments M = moments(contours[maxAreaIdx]);
-            centroid = Point2f(M.m10 / M.m00, M.m01 / M.m00);
+            Moments M1 = moments(contours[maxAreaIdx]);
+            centroid1 = Point2f(M1.m10 / M1.m00, M1.m01 / M1.m00);
         }
 
-        queueYPosition.push((int)centroid.y);
+        // Find center of second biggest contour
+        Point2f centroid2(-1, -1);
+        if (secondAreaIdx != -1) {
+            Moments M2 = moments(contours[secondAreaIdx]);
+            centroid2 = Point2f(M2.m10 / M2.m00, M2.m01 / M2.m00);
+        }
+
+        controlPoints sendPoints;
+        sendPoints.centroid1x = centroid1.x;
+        sendPoints.centroid1y = centroid1.y;
+        sendPoints.centroid2x = centroid2.x;
+        sendPoints.centroid2y = centroid2.y;
+
+        queuePosition.push(sendPoints);
 
         mtx.lock();
-        cout << "Process video " << centroid.x << " - " << centroid.y << endl;
+        cout << "Process video " << centroid1.x << " - " << centroid1.y << endl;
         mtx.unlock();
 
+        cout << "Duration: " << chrono::duration_cast<chrono::microseconds>(chrono::steady_clock::now() - begin).count() << endl;
+
         if(debug){
-            circle(image, centroid, 5, Scalar(0, 0, 255), -1);
-            imshow("Image", image);
+            Mat imageSmall;
+            circle(image, centroid1, 5, Scalar(0, 0, 255), -1);
+            circle(image, centroid2, 5, Scalar(0, 0, 255), -1);
+            resize(image, imageSmall, Size(640, 360), INTER_LINEAR);
+            imshow("Image", imageSmall);
             char c=(char)waitKey(25);
             if(c==27){
                 quit = true;
                 break;
             }
         }
-        i++;
-        cout << "Duration: " << chrono::duration_cast<chrono::microseconds>(chrono::steady_clock::now() - begin).count() << endl;
-        usleep(33000);
     }
 }
 

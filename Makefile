@@ -177,6 +177,30 @@ Game/Game.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PongGame.dir/build.make CMakeFiles/PongGame.dir/Game/Game.cpp.s
 .PHONY : Game/Game.cpp.s
 
+Game/Indicator.o: Game/Indicator.cpp.o
+.PHONY : Game/Indicator.o
+
+# target to build an object file
+Game/Indicator.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PongGame.dir/build.make CMakeFiles/PongGame.dir/Game/Indicator.cpp.o
+.PHONY : Game/Indicator.cpp.o
+
+Game/Indicator.i: Game/Indicator.cpp.i
+.PHONY : Game/Indicator.i
+
+# target to preprocess a source file
+Game/Indicator.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PongGame.dir/build.make CMakeFiles/PongGame.dir/Game/Indicator.cpp.i
+.PHONY : Game/Indicator.cpp.i
+
+Game/Indicator.s: Game/Indicator.cpp.s
+.PHONY : Game/Indicator.s
+
+# target to generate assembly for a file
+Game/Indicator.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PongGame.dir/build.make CMakeFiles/PongGame.dir/Game/Indicator.cpp.s
+.PHONY : Game/Indicator.cpp.s
+
 Game/Paddle.o: Game/Paddle.cpp.o
 .PHONY : Game/Paddle.o
 
@@ -288,6 +312,9 @@ help:
 	@echo "... Game/Game.o"
 	@echo "... Game/Game.i"
 	@echo "... Game/Game.s"
+	@echo "... Game/Indicator.o"
+	@echo "... Game/Indicator.i"
+	@echo "... Game/Indicator.s"
 	@echo "... Game/Paddle.o"
 	@echo "... Game/Paddle.i"
 	@echo "... Game/Paddle.s"

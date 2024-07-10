@@ -26,3 +26,9 @@ void Paddle::Update(float dt) {
         position.y = WINDOW_HEIGHT - PADDLE_HEIGHT;
     }
 }
+
+void Paddle::SetSpeed(int newPosition){
+    if(newPosition >= 0){
+        velocity.y = ((float)newPosition - position.y) * PADDLE_DIF;
+    }
+}

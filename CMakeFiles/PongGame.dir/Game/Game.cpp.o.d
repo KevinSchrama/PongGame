@@ -258,4 +258,4 @@ CMakeFiles/PongGame.dir/Game/Game.cpp.o: /home/pi/PongGame/Game/Game.cpp \
  /usr/include/c++/12/sstream /usr/include/c++/12/bits/sstream.tcc \
  /home/pi/PongGame/Game/Vec2.h /home/pi/PongGame/Game/Ball.h \
  /home/pi/PongGame/Game/constants.h /home/pi/PongGame/Game/Paddle.h \
- /home/pi/PongGame/Game/PlayerScore.h
+ /home/pi/PongGame/Game/PlayerScore.h /home/pi/PongGame/Game/Indicator.h

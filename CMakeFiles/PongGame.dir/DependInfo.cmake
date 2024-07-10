@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/pi/PongGame/Game/Ball.cpp" "CMakeFiles/PongGame.dir/Game/Ball.cpp.o" "gcc" "CMakeFiles/PongGame.dir/Game/Ball.cpp.o.d"
   "/home/pi/PongGame/Game/Game.cpp" "CMakeFiles/PongGame.dir/Game/Game.cpp.o" "gcc" "CMakeFiles/PongGame.dir/Game/Game.cpp.o.d"
+  "/home/pi/PongGame/Game/Indicator.cpp" "CMakeFiles/PongGame.dir/Game/Indicator.cpp.o" "gcc" "CMakeFiles/PongGame.dir/Game/Indicator.cpp.o.d"
   "/home/pi/PongGame/Game/Paddle.cpp" "CMakeFiles/PongGame.dir/Game/Paddle.cpp.o" "gcc" "CMakeFiles/PongGame.dir/Game/Paddle.cpp.o.d"
   "/home/pi/PongGame/Game/PlayerScore.cpp" "CMakeFiles/PongGame.dir/Game/PlayerScore.cpp.o" "gcc" "CMakeFiles/PongGame.dir/Game/PlayerScore.cpp.o.d"
   "/home/pi/PongGame/Game/Vec2.cpp" "CMakeFiles/PongGame.dir/Game/Vec2.cpp.o" "gcc" "CMakeFiles/PongGame.dir/Game/Vec2.cpp.o.d"

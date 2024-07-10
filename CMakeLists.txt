@@ -14,7 +14,10 @@ add_executable(PongGame main.cpp
         Game/PlayerScore.h
         Game/Vec2.cpp
         Game/Vec2.h
+        Game/Indicator.cpp
+        Game/Indicator.h
         Game/constants.h
+        FixedQueue.h
 )
 
 find_package( OpenCV REQUIRED )

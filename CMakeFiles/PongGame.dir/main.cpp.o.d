@@ -440,4 +440,5 @@ CMakeFiles/PongGame.dir/main.cpp.o: /home/pi/PongGame/main.cpp \
  /usr/include/aarch64-linux-gnu/bits/semaphore.h \
  /home/pi/PongGame/Game/Game.h /home/pi/PongGame/Game/Vec2.h \
  /home/pi/PongGame/Game/Ball.h /home/pi/PongGame/Game/constants.h \
- /home/pi/PongGame/Game/Paddle.h /home/pi/PongGame/Game/PlayerScore.h
+ /home/pi/PongGame/Game/Paddle.h /home/pi/PongGame/Game/PlayerScore.h \
+ /home/pi/PongGame/Game/Indicator.h /home/pi/PongGame/FixedQueue.h

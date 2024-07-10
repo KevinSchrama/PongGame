@@ -234,7 +234,54 @@ CMakeFiles/PongGame.dir/Game/Ball.cpp.o: Game/Ball.cpp \
   /usr/include/SDL2/SDL_locale.h \
   /usr/include/SDL2/SDL_misc.h \
   Game/Vec2.h \
-  Game/constants.h
+  Game/constants.h \
+  /usr/include/c++/12/string \
+  /usr/include/c++/12/bits/stringfwd.h \
+  /usr/include/c++/12/bits/memoryfwd.h \
+  /usr/include/c++/12/bits/char_traits.h \
+  /usr/include/c++/12/bits/postypes.h \
+  /usr/include/c++/12/cwchar \
+  /usr/include/c++/12/cstdint \
+  /usr/include/c++/12/bits/allocator.h \
+  /usr/include/aarch64-linux-gnu/c++/12/bits/c++allocator.h \
+  /usr/include/c++/12/bits/new_allocator.h \
+  /usr/include/c++/12/bits/localefwd.h \
+  /usr/include/aarch64-linux-gnu/c++/12/bits/c++locale.h \
+  /usr/include/c++/12/clocale \
+  /usr/include/locale.h \
+  /usr/include/aarch64-linux-gnu/bits/locale.h \
+  /usr/include/c++/12/iosfwd \
+  /usr/include/c++/12/cctype \
+  /usr/include/c++/12/bits/ostream_insert.h \
+  /usr/include/c++/12/bits/cxxabi_forced.h \
+  /usr/include/c++/12/bits/stl_function.h \
+  /usr/include/c++/12/backward/binders.h \
+  /usr/include/c++/12/bits/refwrap.h \
+  /usr/include/c++/12/bits/invoke.h \
+  /usr/include/c++/12/bits/range_access.h \
+  /usr/include/c++/12/initializer_list \
+  /usr/include/c++/12/bits/basic_string.h \
+  /usr/include/c++/12/ext/alloc_traits.h \
+  /usr/include/c++/12/bits/alloc_traits.h \
+  /usr/include/c++/12/string_view \
+  /usr/include/c++/12/bits/functional_hash.h \
+  /usr/include/c++/12/bits/hash_bytes.h \
+  /usr/include/c++/12/bits/ranges_base.h \
+  /usr/include/c++/12/bits/max_size_type.h \
+  /usr/include/c++/12/numbers \
+  /usr/include/c++/12/bits/string_view.tcc \
+  /usr/include/c++/12/ext/string_conversions.h \
+  /usr/include/c++/12/cstdio \
+  /usr/include/c++/12/cerrno \
+  /usr/include/errno.h \
+  /usr/include/aarch64-linux-gnu/bits/errno.h \
+  /usr/include/linux/errno.h \
+  /usr/lib/linux/uapi/arm64/asm/errno.h \
+  /usr/include/asm-generic/errno.h \
+  /usr/include/asm-generic/errno-base.h \
+  /usr/include/aarch64-linux-gnu/bits/types/error_t.h \
+  /usr/include/c++/12/bits/charconv.h \
+  /usr/include/c++/12/bits/basic_string.tcc
 
 CMakeFiles/PongGame.dir/Game/Game.cpp.o: Game/Game.cpp \
   /usr/include/stdc-predef.h \
@@ -575,7 +622,290 @@ CMakeFiles/PongGame.dir/Game/Game.cpp.o: Game/Game.cpp \
   Game/Ball.h \
   Game/constants.h \
   Game/Paddle.h \
-  Game/PlayerScore.h
+  Game/PlayerScore.h \
+  Game/Indicator.h
+
+CMakeFiles/PongGame.dir/Game/Indicator.cpp.o: Game/Indicator.cpp \
+  /usr/include/stdc-predef.h \
+  Game/Indicator.h \
+  /usr/include/SDL2/SDL.h \
+  /usr/include/SDL2/SDL_main.h \
+  /usr/include/SDL2/SDL_stdinc.h \
+  /usr/include/SDL2/SDL_config.h \
+  /usr/include/aarch64-linux-gnu/SDL2/_real_SDL_config.h \
+  /usr/include/SDL2/SDL_platform.h \
+  /usr/include/SDL2/begin_code.h \
+  /usr/include/SDL2/close_code.h \
+  /usr/include/aarch64-linux-gnu/sys/types.h \
+  /usr/include/features.h \
+  /usr/include/features-time64.h \
+  /usr/include/aarch64-linux-gnu/bits/wordsize.h \
+  /usr/include/aarch64-linux-gnu/bits/timesize.h \
+  /usr/include/aarch64-linux-gnu/sys/cdefs.h \
+  /usr/include/aarch64-linux-gnu/bits/long-double.h \
+  /usr/include/aarch64-linux-gnu/gnu/stubs.h \
+  /usr/include/aarch64-linux-gnu/gnu/stubs-lp64.h \
+  /usr/include/aarch64-linux-gnu/bits/types.h \
+  /usr/include/aarch64-linux-gnu/bits/typesizes.h \
+  /usr/include/aarch64-linux-gnu/bits/time64.h \
+  /usr/include/aarch64-linux-gnu/bits/types/clock_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/clockid_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/time_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/timer_t.h \
+  /usr/lib/gcc/aarch64-linux-gnu/12/include/stddef.h \
+  /usr/include/aarch64-linux-gnu/bits/stdint-intn.h \
+  /usr/include/endian.h \
+  /usr/include/aarch64-linux-gnu/bits/endian.h \
+  /usr/include/aarch64-linux-gnu/bits/endianness.h \
+  /usr/include/aarch64-linux-gnu/bits/byteswap.h \
+  /usr/include/aarch64-linux-gnu/bits/uintn-identity.h \
+  /usr/include/aarch64-linux-gnu/sys/select.h \
+  /usr/include/aarch64-linux-gnu/bits/select.h \
+  /usr/include/aarch64-linux-gnu/bits/types/sigset_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/__sigset_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/struct_timeval.h \
+  /usr/include/aarch64-linux-gnu/bits/types/struct_timespec.h \
+  /usr/include/aarch64-linux-gnu/bits/pthreadtypes.h \
+  /usr/include/aarch64-linux-gnu/bits/thread-shared-types.h \
+  /usr/include/aarch64-linux-gnu/bits/pthreadtypes-arch.h \
+  /usr/include/aarch64-linux-gnu/bits/atomic_wide_counter.h \
+  /usr/include/aarch64-linux-gnu/bits/struct_mutex.h \
+  /usr/include/aarch64-linux-gnu/bits/struct_rwlock.h \
+  /usr/include/stdio.h \
+  /usr/include/aarch64-linux-gnu/bits/libc-header-start.h \
+  /usr/lib/gcc/aarch64-linux-gnu/12/include/stdarg.h \
+  /usr/include/aarch64-linux-gnu/bits/types/__fpos_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/__mbstate_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/__fpos64_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/__FILE.h \
+  /usr/include/aarch64-linux-gnu/bits/types/FILE.h \
+  /usr/include/aarch64-linux-gnu/bits/types/struct_FILE.h \
+  /usr/include/aarch64-linux-gnu/bits/types/cookie_io_functions_t.h \
+  /usr/include/aarch64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/aarch64-linux-gnu/bits/floatn.h \
+  /usr/include/aarch64-linux-gnu/bits/floatn-common.h \
+  /usr/include/c++/12/stdlib.h \
+  /usr/include/c++/12/cstdlib \
+  /usr/include/aarch64-linux-gnu/c++/12/bits/c++config.h \
+  /usr/include/aarch64-linux-gnu/c++/12/bits/os_defines.h \
+  /usr/include/aarch64-linux-gnu/c++/12/bits/cpu_defines.h \
+  /usr/include/c++/12/pstl/pstl_config.h \
+  /usr/include/stdlib.h \
+  /usr/include/aarch64-linux-gnu/bits/waitflags.h \
+  /usr/include/aarch64-linux-gnu/bits/waitstatus.h \
+  /usr/include/aarch64-linux-gnu/bits/types/locale_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/__locale_t.h \
+  /usr/include/alloca.h \
+  /usr/include/aarch64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/c++/12/bits/std_abs.h \
+  /usr/include/string.h \
+  /usr/include/strings.h \
+  /usr/include/wchar.h \
+  /usr/include/aarch64-linux-gnu/bits/wchar.h \
+  /usr/include/aarch64-linux-gnu/bits/types/wint_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/mbstate_t.h \
+  /usr/include/inttypes.h \
+  /usr/lib/gcc/aarch64-linux-gnu/12/include/stdint.h \
+  /usr/include/stdint.h \
+  /usr/include/aarch64-linux-gnu/bits/stdint-uintn.h \
+  /usr/include/ctype.h \
+  /usr/include/c++/12/math.h \
+  /usr/include/c++/12/cmath \
+  /usr/include/c++/12/bits/cpp_type_traits.h \
+  /usr/include/c++/12/ext/type_traits.h \
+  /usr/include/math.h \
+  /usr/include/aarch64-linux-gnu/bits/math-vector.h \
+  /usr/include/aarch64-linux-gnu/bits/libm-simd-decl-stubs.h \
+  /usr/include/aarch64-linux-gnu/bits/flt-eval-method.h \
+  /usr/include/aarch64-linux-gnu/bits/fp-logb.h \
+  /usr/include/aarch64-linux-gnu/bits/fp-fast.h \
+  /usr/include/aarch64-linux-gnu/bits/mathcalls-helper-functions.h \
+  /usr/include/aarch64-linux-gnu/bits/mathcalls.h \
+  /usr/include/aarch64-linux-gnu/bits/mathcalls-narrow.h \
+  /usr/include/aarch64-linux-gnu/bits/iscanonical.h \
+  /usr/include/c++/12/bits/specfun.h \
+  /usr/include/c++/12/bits/stl_algobase.h \
+  /usr/include/c++/12/bits/functexcept.h \
+  /usr/include/c++/12/bits/exception_defines.h \
+  /usr/include/c++/12/ext/numeric_traits.h \
+  /usr/include/c++/12/bits/stl_pair.h \
+  /usr/include/c++/12/type_traits \
+  /usr/include/c++/12/bits/move.h \
+  /usr/include/c++/12/bits/utility.h \
+  /usr/include/c++/12/compare \
+  /usr/include/c++/12/concepts \
+  /usr/include/c++/12/bits/stl_iterator_base_types.h \
+  /usr/include/c++/12/bits/iterator_concepts.h \
+  /usr/include/c++/12/bits/ptr_traits.h \
+  /usr/include/c++/12/bits/ranges_cmp.h \
+  /usr/include/c++/12/bits/stl_iterator_base_funcs.h \
+  /usr/include/c++/12/bits/concept_check.h \
+  /usr/include/c++/12/debug/assertions.h \
+  /usr/include/c++/12/bits/stl_iterator.h \
+  /usr/include/c++/12/new \
+  /usr/include/c++/12/bits/exception.h \
+  /usr/include/c++/12/bits/stl_construct.h \
+  /usr/include/c++/12/debug/debug.h \
+  /usr/include/c++/12/bits/predefined_ops.h \
+  /usr/include/c++/12/limits \
+  /usr/include/c++/12/tr1/gamma.tcc \
+  /usr/include/c++/12/tr1/special_function_util.h \
+  /usr/include/c++/12/tr1/bessel_function.tcc \
+  /usr/include/c++/12/tr1/beta_function.tcc \
+  /usr/include/c++/12/tr1/ell_integral.tcc \
+  /usr/include/c++/12/tr1/exp_integral.tcc \
+  /usr/include/c++/12/tr1/hypergeometric.tcc \
+  /usr/include/c++/12/tr1/legendre_function.tcc \
+  /usr/include/c++/12/tr1/modified_bessel_func.tcc \
+  /usr/include/c++/12/tr1/poly_hermite.tcc \
+  /usr/include/c++/12/tr1/poly_laguerre.tcc \
+  /usr/include/c++/12/tr1/riemann_zeta.tcc \
+  /usr/lib/gcc/aarch64-linux-gnu/12/include/float.h \
+  /usr/include/SDL2/SDL_assert.h \
+  /usr/include/signal.h \
+  /usr/include/aarch64-linux-gnu/bits/signum-generic.h \
+  /usr/include/aarch64-linux-gnu/bits/signum-arch.h \
+  /usr/include/aarch64-linux-gnu/bits/types/sig_atomic_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/siginfo_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/__sigval_t.h \
+  /usr/include/aarch64-linux-gnu/bits/siginfo-arch.h \
+  /usr/include/aarch64-linux-gnu/bits/siginfo-consts.h \
+  /usr/include/aarch64-linux-gnu/bits/siginfo-consts-arch.h \
+  /usr/include/aarch64-linux-gnu/bits/types/sigval_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/sigevent_t.h \
+  /usr/include/aarch64-linux-gnu/bits/sigevent-consts.h \
+  /usr/include/aarch64-linux-gnu/bits/sigaction.h \
+  /usr/include/aarch64-linux-gnu/bits/sigcontext.h \
+  /usr/lib/linux/uapi/arm64/asm/sigcontext.h \
+  /usr/include/linux/types.h \
+  /usr/lib/linux/uapi/arm64/asm/types.h \
+  /usr/include/asm-generic/types.h \
+  /usr/include/asm-generic/int-ll64.h \
+  /usr/lib/linux/uapi/arm64/asm/bitsperlong.h \
+  /usr/include/asm-generic/bitsperlong.h \
+  /usr/include/linux/posix_types.h \
+  /usr/include/linux/stddef.h \
+  /usr/lib/linux/uapi/arm64/asm/posix_types.h \
+  /usr/include/asm-generic/posix_types.h \
+  /usr/lib/linux/uapi/arm64/asm/sve_context.h \
+  /usr/include/aarch64-linux-gnu/bits/types/stack_t.h \
+  /usr/include/aarch64-linux-gnu/sys/ucontext.h \
+  /usr/include/aarch64-linux-gnu/sys/procfs.h \
+  /usr/include/aarch64-linux-gnu/sys/time.h \
+  /usr/include/aarch64-linux-gnu/sys/user.h \
+  /usr/include/aarch64-linux-gnu/bits/procfs.h \
+  /usr/include/aarch64-linux-gnu/bits/procfs-id.h \
+  /usr/include/aarch64-linux-gnu/bits/procfs-prregset.h \
+  /usr/include/aarch64-linux-gnu/bits/procfs-extra.h \
+  /usr/include/aarch64-linux-gnu/bits/sigstack.h \
+  /usr/include/aarch64-linux-gnu/bits/sigstksz.h \
+  /usr/include/unistd.h \
+  /usr/include/aarch64-linux-gnu/bits/posix_opt.h \
+  /usr/include/aarch64-linux-gnu/bits/environments.h \
+  /usr/include/aarch64-linux-gnu/bits/confname.h \
+  /usr/include/aarch64-linux-gnu/bits/getopt_posix.h \
+  /usr/include/aarch64-linux-gnu/bits/getopt_core.h \
+  /usr/include/aarch64-linux-gnu/bits/unistd_ext.h \
+  /usr/include/linux/close_range.h \
+  /usr/include/aarch64-linux-gnu/bits/ss_flags.h \
+  /usr/include/aarch64-linux-gnu/bits/types/struct_sigstack.h \
+  /usr/include/aarch64-linux-gnu/bits/sigthread.h \
+  /usr/include/aarch64-linux-gnu/bits/signal_ext.h \
+  /usr/include/SDL2/SDL_atomic.h \
+  /usr/include/SDL2/SDL_platform.h \
+  /usr/include/SDL2/SDL_audio.h \
+  /usr/include/SDL2/SDL_error.h \
+  /usr/include/SDL2/SDL_endian.h \
+  /usr/include/SDL2/SDL_mutex.h \
+  /usr/include/SDL2/SDL_thread.h \
+  /usr/include/SDL2/SDL_rwops.h \
+  /usr/include/SDL2/SDL_clipboard.h \
+  /usr/include/SDL2/SDL_cpuinfo.h \
+  /usr/lib/gcc/aarch64-linux-gnu/12/include/arm_neon.h \
+  /usr/lib/gcc/aarch64-linux-gnu/12/include/arm_fp16.h \
+  /usr/lib/gcc/aarch64-linux-gnu/12/include/arm_bf16.h \
+  /usr/include/SDL2/SDL_events.h \
+  /usr/include/SDL2/SDL_video.h \
+  /usr/include/SDL2/SDL_pixels.h \
+  /usr/include/SDL2/SDL_rect.h \
+  /usr/include/SDL2/SDL_surface.h \
+  /usr/include/SDL2/SDL_blendmode.h \
+  /usr/include/SDL2/SDL_keyboard.h \
+  /usr/include/SDL2/SDL_keycode.h \
+  /usr/include/SDL2/SDL_scancode.h \
+  /usr/include/SDL2/SDL_mouse.h \
+  /usr/include/SDL2/SDL_joystick.h \
+  /usr/include/SDL2/SDL_guid.h \
+  /usr/include/SDL2/SDL_gamecontroller.h \
+  /usr/include/SDL2/SDL_sensor.h \
+  /usr/include/SDL2/SDL_quit.h \
+  /usr/include/SDL2/SDL_gesture.h \
+  /usr/include/SDL2/SDL_touch.h \
+  /usr/include/SDL2/SDL_filesystem.h \
+  /usr/include/SDL2/SDL_haptic.h \
+  /usr/include/SDL2/SDL_hidapi.h \
+  /usr/include/SDL2/SDL_hints.h \
+  /usr/include/SDL2/SDL_loadso.h \
+  /usr/include/SDL2/SDL_log.h \
+  /usr/include/SDL2/SDL_messagebox.h \
+  /usr/include/SDL2/SDL_metal.h \
+  /usr/include/SDL2/SDL_power.h \
+  /usr/include/SDL2/SDL_render.h \
+  /usr/include/SDL2/SDL_shape.h \
+  /usr/include/SDL2/SDL_system.h \
+  /usr/include/SDL2/SDL_timer.h \
+  /usr/include/SDL2/SDL_version.h \
+  /usr/include/SDL2/SDL_locale.h \
+  /usr/include/SDL2/SDL_misc.h \
+  Game/Vec2.h \
+  Game/constants.h \
+  /usr/include/c++/12/string \
+  /usr/include/c++/12/bits/stringfwd.h \
+  /usr/include/c++/12/bits/memoryfwd.h \
+  /usr/include/c++/12/bits/char_traits.h \
+  /usr/include/c++/12/bits/postypes.h \
+  /usr/include/c++/12/cwchar \
+  /usr/include/c++/12/cstdint \
+  /usr/include/c++/12/bits/allocator.h \
+  /usr/include/aarch64-linux-gnu/c++/12/bits/c++allocator.h \
+  /usr/include/c++/12/bits/new_allocator.h \
+  /usr/include/c++/12/bits/localefwd.h \
+  /usr/include/aarch64-linux-gnu/c++/12/bits/c++locale.h \
+  /usr/include/c++/12/clocale \
+  /usr/include/locale.h \
+  /usr/include/aarch64-linux-gnu/bits/locale.h \
+  /usr/include/c++/12/iosfwd \
+  /usr/include/c++/12/cctype \
+  /usr/include/c++/12/bits/ostream_insert.h \
+  /usr/include/c++/12/bits/cxxabi_forced.h \
+  /usr/include/c++/12/bits/stl_function.h \
+  /usr/include/c++/12/backward/binders.h \
+  /usr/include/c++/12/bits/refwrap.h \
+  /usr/include/c++/12/bits/invoke.h \
+  /usr/include/c++/12/bits/range_access.h \
+  /usr/include/c++/12/initializer_list \
+  /usr/include/c++/12/bits/basic_string.h \
+  /usr/include/c++/12/ext/alloc_traits.h \
+  /usr/include/c++/12/bits/alloc_traits.h \
+  /usr/include/c++/12/string_view \
+  /usr/include/c++/12/bits/functional_hash.h \
+  /usr/include/c++/12/bits/hash_bytes.h \
+  /usr/include/c++/12/bits/ranges_base.h \
+  /usr/include/c++/12/bits/max_size_type.h \
+  /usr/include/c++/12/numbers \
+  /usr/include/c++/12/bits/string_view.tcc \
+  /usr/include/c++/12/ext/string_conversions.h \
+  /usr/include/c++/12/cstdio \
+  /usr/include/c++/12/cerrno \
+  /usr/include/errno.h \
+  /usr/include/aarch64-linux-gnu/bits/errno.h \
+  /usr/include/linux/errno.h \
+  /usr/lib/linux/uapi/arm64/asm/errno.h \
+  /usr/include/asm-generic/errno.h \
+  /usr/include/asm-generic/errno-base.h \
+  /usr/include/aarch64-linux-gnu/bits/types/error_t.h \
+  /usr/include/c++/12/bits/charconv.h \
+  /usr/include/c++/12/bits/basic_string.tcc
 
 CMakeFiles/PongGame.dir/Game/Paddle.cpp.o: Game/Paddle.cpp \
   /usr/include/stdc-predef.h \
@@ -810,7 +1140,54 @@ CMakeFiles/PongGame.dir/Game/Paddle.cpp.o: Game/Paddle.cpp \
   /usr/include/SDL2/SDL_locale.h \
   /usr/include/SDL2/SDL_misc.h \
   Game/Vec2.h \
-  Game/constants.h
+  Game/constants.h \
+  /usr/include/c++/12/string \
+  /usr/include/c++/12/bits/stringfwd.h \
+  /usr/include/c++/12/bits/memoryfwd.h \
+  /usr/include/c++/12/bits/char_traits.h \
+  /usr/include/c++/12/bits/postypes.h \
+  /usr/include/c++/12/cwchar \
+  /usr/include/c++/12/cstdint \
+  /usr/include/c++/12/bits/allocator.h \
+  /usr/include/aarch64-linux-gnu/c++/12/bits/c++allocator.h \
+  /usr/include/c++/12/bits/new_allocator.h \
+  /usr/include/c++/12/bits/localefwd.h \
+  /usr/include/aarch64-linux-gnu/c++/12/bits/c++locale.h \
+  /usr/include/c++/12/clocale \
+  /usr/include/locale.h \
+  /usr/include/aarch64-linux-gnu/bits/locale.h \
+  /usr/include/c++/12/iosfwd \
+  /usr/include/c++/12/cctype \
+  /usr/include/c++/12/bits/ostream_insert.h \
+  /usr/include/c++/12/bits/cxxabi_forced.h \
+  /usr/include/c++/12/bits/stl_function.h \
+  /usr/include/c++/12/backward/binders.h \
+  /usr/include/c++/12/bits/refwrap.h \
+  /usr/include/c++/12/bits/invoke.h \
+  /usr/include/c++/12/bits/range_access.h \
+  /usr/include/c++/12/initializer_list \
+  /usr/include/c++/12/bits/basic_string.h \
+  /usr/include/c++/12/ext/alloc_traits.h \
+  /usr/include/c++/12/bits/alloc_traits.h \
+  /usr/include/c++/12/string_view \
+  /usr/include/c++/12/bits/functional_hash.h \
+  /usr/include/c++/12/bits/hash_bytes.h \
+  /usr/include/c++/12/bits/ranges_base.h \
+  /usr/include/c++/12/bits/max_size_type.h \
+  /usr/include/c++/12/numbers \
+  /usr/include/c++/12/bits/string_view.tcc \
+  /usr/include/c++/12/ext/string_conversions.h \
+  /usr/include/c++/12/cstdio \
+  /usr/include/c++/12/cerrno \
+  /usr/include/errno.h \
+  /usr/include/aarch64-linux-gnu/bits/errno.h \
+  /usr/include/linux/errno.h \
+  /usr/lib/linux/uapi/arm64/asm/errno.h \
+  /usr/include/asm-generic/errno.h \
+  /usr/include/asm-generic/errno-base.h \
+  /usr/include/aarch64-linux-gnu/bits/types/error_t.h \
+  /usr/include/c++/12/bits/charconv.h \
+  /usr/include/c++/12/bits/basic_string.tcc
 
 CMakeFiles/PongGame.dir/Game/PlayerScore.cpp.o: Game/PlayerScore.cpp \
   /usr/include/stdc-predef.h \
@@ -1048,28 +1425,61 @@ CMakeFiles/PongGame.dir/Game/PlayerScore.cpp.o: Game/PlayerScore.cpp \
   /usr/include/SDL2/SDL.h \
   Game/Vec2.h \
   Game/constants.h \
-  /usr/include/c++/12/iostream \
-  /usr/include/c++/12/ostream \
-  /usr/include/c++/12/ios \
-  /usr/include/c++/12/iosfwd \
+  /usr/include/c++/12/string \
   /usr/include/c++/12/bits/stringfwd.h \
   /usr/include/c++/12/bits/memoryfwd.h \
+  /usr/include/c++/12/bits/char_traits.h \
   /usr/include/c++/12/bits/postypes.h \
   /usr/include/c++/12/cwchar \
-  /usr/include/c++/12/exception \
-  /usr/include/c++/12/bits/exception_ptr.h \
-  /usr/include/c++/12/bits/cxxabi_init_exception.h \
-  /usr/include/c++/12/typeinfo \
-  /usr/include/c++/12/bits/hash_bytes.h \
-  /usr/include/c++/12/bits/nested_exception.h \
-  /usr/include/c++/12/bits/char_traits.h \
   /usr/include/c++/12/cstdint \
+  /usr/include/c++/12/bits/allocator.h \
+  /usr/include/aarch64-linux-gnu/c++/12/bits/c++allocator.h \
+  /usr/include/c++/12/bits/new_allocator.h \
   /usr/include/c++/12/bits/localefwd.h \
   /usr/include/aarch64-linux-gnu/c++/12/bits/c++locale.h \
   /usr/include/c++/12/clocale \
   /usr/include/locale.h \
   /usr/include/aarch64-linux-gnu/bits/locale.h \
+  /usr/include/c++/12/iosfwd \
   /usr/include/c++/12/cctype \
+  /usr/include/c++/12/bits/ostream_insert.h \
+  /usr/include/c++/12/bits/cxxabi_forced.h \
+  /usr/include/c++/12/bits/stl_function.h \
+  /usr/include/c++/12/backward/binders.h \
+  /usr/include/c++/12/bits/refwrap.h \
+  /usr/include/c++/12/bits/invoke.h \
+  /usr/include/c++/12/bits/range_access.h \
+  /usr/include/c++/12/initializer_list \
+  /usr/include/c++/12/bits/basic_string.h \
+  /usr/include/c++/12/ext/alloc_traits.h \
+  /usr/include/c++/12/bits/alloc_traits.h \
+  /usr/include/c++/12/string_view \
+  /usr/include/c++/12/bits/functional_hash.h \
+  /usr/include/c++/12/bits/hash_bytes.h \
+  /usr/include/c++/12/bits/ranges_base.h \
+  /usr/include/c++/12/bits/max_size_type.h \
+  /usr/include/c++/12/numbers \
+  /usr/include/c++/12/bits/string_view.tcc \
+  /usr/include/c++/12/ext/string_conversions.h \
+  /usr/include/c++/12/cstdio \
+  /usr/include/c++/12/cerrno \
+  /usr/include/errno.h \
+  /usr/include/aarch64-linux-gnu/bits/errno.h \
+  /usr/include/linux/errno.h \
+  /usr/lib/linux/uapi/arm64/asm/errno.h \
+  /usr/include/asm-generic/errno.h \
+  /usr/include/asm-generic/errno-base.h \
+  /usr/include/aarch64-linux-gnu/bits/types/error_t.h \
+  /usr/include/c++/12/bits/charconv.h \
+  /usr/include/c++/12/bits/basic_string.tcc \
+  /usr/include/c++/12/iostream \
+  /usr/include/c++/12/ostream \
+  /usr/include/c++/12/ios \
+  /usr/include/c++/12/exception \
+  /usr/include/c++/12/bits/exception_ptr.h \
+  /usr/include/c++/12/bits/cxxabi_init_exception.h \
+  /usr/include/c++/12/typeinfo \
+  /usr/include/c++/12/bits/nested_exception.h \
   /usr/include/c++/12/bits/ios_base.h \
   /usr/include/c++/12/ext/atomicity.h \
   /usr/include/aarch64-linux-gnu/c++/12/bits/gthr.h \
@@ -1090,39 +1500,6 @@ CMakeFiles/PongGame.dir/Game/PlayerScore.cpp.o: Game/PlayerScore.cpp \
   /usr/include/aarch64-linux-gnu/c++/12/bits/atomic_word.h \
   /usr/include/aarch64-linux-gnu/sys/single_threaded.h \
   /usr/include/c++/12/bits/locale_classes.h \
-  /usr/include/c++/12/string \
-  /usr/include/c++/12/bits/allocator.h \
-  /usr/include/aarch64-linux-gnu/c++/12/bits/c++allocator.h \
-  /usr/include/c++/12/bits/new_allocator.h \
-  /usr/include/c++/12/bits/ostream_insert.h \
-  /usr/include/c++/12/bits/cxxabi_forced.h \
-  /usr/include/c++/12/bits/stl_function.h \
-  /usr/include/c++/12/backward/binders.h \
-  /usr/include/c++/12/bits/refwrap.h \
-  /usr/include/c++/12/bits/invoke.h \
-  /usr/include/c++/12/bits/range_access.h \
-  /usr/include/c++/12/initializer_list \
-  /usr/include/c++/12/bits/basic_string.h \
-  /usr/include/c++/12/ext/alloc_traits.h \
-  /usr/include/c++/12/bits/alloc_traits.h \
-  /usr/include/c++/12/string_view \
-  /usr/include/c++/12/bits/functional_hash.h \
-  /usr/include/c++/12/bits/ranges_base.h \
-  /usr/include/c++/12/bits/max_size_type.h \
-  /usr/include/c++/12/numbers \
-  /usr/include/c++/12/bits/string_view.tcc \
-  /usr/include/c++/12/ext/string_conversions.h \
-  /usr/include/c++/12/cstdio \
-  /usr/include/c++/12/cerrno \
-  /usr/include/errno.h \
-  /usr/include/aarch64-linux-gnu/bits/errno.h \
-  /usr/include/linux/errno.h \
-  /usr/lib/linux/uapi/arm64/asm/errno.h \
-  /usr/include/asm-generic/errno.h \
-  /usr/include/asm-generic/errno-base.h \
-  /usr/include/aarch64-linux-gnu/bits/types/error_t.h \
-  /usr/include/c++/12/bits/charconv.h \
-  /usr/include/c++/12/bits/basic_string.tcc \
   /usr/include/c++/12/bits/locale_classes.tcc \
   /usr/include/c++/12/system_error \
   /usr/include/aarch64-linux-gnu/c++/12/bits/error_constants.h \
@@ -1697,8 +2074,12 @@ CMakeFiles/PongGame.dir/main.cpp.o: main.cpp \
   Game/Ball.h \
   Game/constants.h \
   Game/Paddle.h \
-  Game/PlayerScore.h
+  Game/PlayerScore.h \
+  Game/Indicator.h \
+  FixedQueue.h
 
+
+FixedQueue.h:
 
 /usr/include/aarch64-linux-gnu/bits/semaphore.h:
 
@@ -1706,11 +2087,27 @@ CMakeFiles/PongGame.dir/main.cpp.o: main.cpp \
 
 /usr/include/c++/12/bits/std_thread.h:
 
+/usr/include/c++/12/stop_token:
+
+/usr/include/c++/12/bits/range_access.h:
+
+/usr/include/c++/12/backward/binders.h:
+
+/usr/include/SDL2/SDL_surface.h:
+
+/usr/include/c++/12/bits/cxxabi_forced.h:
+
+/usr/include/SDL2/SDL_render.h:
+
+/usr/include/c++/12/bits/ostream_insert.h:
+
 /usr/include/aarch64-linux-gnu/bits/locale.h:
 
-/usr/include/aarch64-linux-gnu/bits/confname.h:
+/usr/include/aarch64-linux-gnu/c++/12/bits/c++allocator.h:
 
-/usr/include/c++/12/exception:
+/usr/include/opencv4/opencv2/flann/all_indices.h:
+
+/usr/include/c++/12/bits/allocator.h:
 
 /usr/include/c++/12/cwchar:
 
@@ -1722,11 +2119,9 @@ CMakeFiles/PongGame.dir/main.cpp.o: main.cpp \
 
 /usr/include/opencv4/opencv2/flann/defines.h:
 
-/usr/include/c++/12/iostream:
+/usr/include/aarch64-linux-gnu/bits/stdint-uintn.h:
 
 /usr/include/c++/12/bits/hash_bytes.h:
-
-/usr/include/aarch64-linux-gnu/bits/stdint-uintn.h:
 
 /usr/include/SDL2/SDL_version.h:
 
@@ -1754,10 +2149,6 @@ CMakeFiles/PongGame.dir/main.cpp.o: main.cpp \
 
 /usr/include/opencv4/opencv2/highgui.hpp:
 
-/usr/include/SDL2/SDL_metal.h:
-
-Game/Game.h:
-
 /usr/include/SDL2/SDL_haptic.h:
 
 /usr/include/SDL2/SDL_shape.h:
@@ -1770,19 +2161,11 @@ Game/Game.h:
 
 /usr/include/SDL2/SDL_sensor.h:
 
-/usr/include/c++/12/tr1/gamma.tcc:
-
-/usr/include/SDL2/SDL_gamecontroller.h:
-
 /usr/include/opencv4/opencv2/core/affine.hpp:
 
 /usr/include/SDL2/SDL_scancode.h:
 
 /usr/include/aarch64-linux-gnu/c++/12/bits/atomic_word.h:
-
-/usr/include/SDL2/SDL_surface.h:
-
-/usr/include/c++/12/backward/binders.h:
 
 /usr/include/c++/12/bits/stl_uninitialized.h:
 
@@ -1802,14 +2185,6 @@ Game/Game.h:
 
 /usr/include/aarch64-linux-gnu/c++/12/bits/gthr-default.h:
 
-/usr/include/c++/12/typeinfo:
-
-/usr/include/SDL2/SDL_quit.h:
-
-/usr/include/aarch64-linux-gnu/bits/byteswap.h:
-
-/usr/include/c++/12/math.h:
-
 /usr/include/SDL2/SDL_error.h:
 
 /usr/include/aarch64-linux-gnu/bits/signal_ext.h:
@@ -1823,6 +2198,8 @@ Game/Game.h:
 /usr/include/c++/12/clocale:
 
 /usr/lib/linux/uapi/arm64/asm/unistd.h:
+
+/usr/include/aarch64-linux-gnu/bits/confname.h:
 
 /usr/include/unistd.h:
 
@@ -1870,7 +2247,17 @@ Game/Ball.cpp:
 
 /usr/include/c++/12/bits/locale_facets.tcc:
 
+/usr/include/SDL2/SDL_quit.h:
+
+/usr/include/aarch64-linux-gnu/bits/byteswap.h:
+
+/usr/include/c++/12/math.h:
+
+/usr/include/c++/12/typeinfo:
+
 /usr/include/aarch64-linux-gnu/bits/siginfo-consts.h:
+
+/usr/include/c++/12/bits/stl_function.h:
 
 /usr/include/aarch64-linux-gnu/bits/siginfo-arch.h:
 
@@ -1906,6 +2293,10 @@ Game/Vec2.h:
 
 /usr/include/aarch64-linux-gnu/sys/user.h:
 
+/usr/include/c++/12/atomic:
+
+/usr/include/aarch64-linux-gnu/bits/types/siginfo_t.h:
+
 /usr/include/c++/12/cwctype:
 
 /usr/include/c++/12/bits/chrono.h:
@@ -1937,10 +2328,6 @@ Game/Vec2.h:
 /usr/include/c++/12/system_error:
 
 /usr/include/aarch64-linux-gnu/bits/libc-header-start.h:
-
-/usr/include/aarch64-linux-gnu/bits/types/siginfo_t.h:
-
-/usr/include/c++/12/atomic:
 
 /usr/include/aarch64-linux-gnu/bits/long-double.h:
 
@@ -2014,10 +2401,6 @@ Game/Vec2.h:
 
 Game/PlayerScore.h:
 
-/usr/include/c++/12/ios:
-
-/usr/include/aarch64-linux-gnu/c++/12/bits/c++config.h:
-
 /usr/include/linux/errno.h:
 
 /usr/include/opencv4/opencv2/flann/logger.h:
@@ -2033,8 +2416,6 @@ Game/PlayerScore.h:
 /usr/include/c++/12/bits/enable_special_members.h:
 
 /usr/include/features.h:
-
-/usr/include/c++/12/bits/exception_ptr.h:
 
 /usr/include/linux/stddef.h:
 
@@ -2096,6 +2477,8 @@ Game/Ball.h:
 
 /usr/include/SDL2/SDL_main.h:
 
+Game/Indicator.h:
+
 /usr/include/c++/12/pstl/glue_memory_defs.h:
 
 /usr/include/SDL2/SDL_endian.h:
@@ -2106,9 +2489,9 @@ Game/Ball.h:
 
 /usr/include/aarch64-linux-gnu/bits/types/__sigset_t.h:
 
-/usr/include/c++/12/bits/nested_exception.h:
-
 /usr/include/aarch64-linux-gnu/bits/flt-eval-method.h:
+
+/usr/include/c++/12/bits/nested_exception.h:
 
 /usr/lib/gcc/aarch64-linux-gnu/12/include/stddef.h:
 
@@ -2150,12 +2533,6 @@ Game/Ball.h:
 
 /usr/include/aarch64-linux-gnu/bits/math-vector.h:
 
-/usr/include/semaphore.h:
-
-/usr/include/c++/12/iosfwd:
-
-Game/Game.cpp:
-
 /usr/include/opencv4/opencv2/flann/miniflann.hpp:
 
 /usr/lib/gcc/aarch64-linux-gnu/12/include/arm_neon.h:
@@ -2174,7 +2551,9 @@ Game/Game.cpp:
 
 /usr/include/SDL2/SDL_pixels.h:
 
-/usr/include/c++/12/bits/allocator.h:
+/usr/include/SDL2/SDL_system.h:
+
+/usr/include/c++/12/bits/refwrap.h:
 
 /usr/include/c++/12/stdlib.h:
 
@@ -2214,6 +2593,8 @@ Game/Game.cpp:
 
 /usr/include/aarch64-linux-gnu/bits/waitflags.h:
 
+Game/Indicator.cpp:
+
 /usr/include/SDL2/SDL_misc.h:
 
 /usr/include/opencv4/opencv2/flann/config.h:
@@ -2236,6 +2617,10 @@ Game/Game.cpp:
 
 /usr/include/c++/12/bits/stl_multimap.h:
 
+/usr/include/aarch64-linux-gnu/bits/procfs-extra.h:
+
+/usr/include/c++/12/string:
+
 /usr/include/wchar.h:
 
 /usr/include/aarch64-linux-gnu/bits/posix_opt.h:
@@ -2248,6 +2633,10 @@ Game/Game.cpp:
 
 /usr/include/SDL2/SDL_ttf.h:
 
+/usr/include/c++/12/bits/new_allocator.h:
+
+/usr/include/aarch64-linux-gnu/bits/procfs.h:
+
 /usr/lib/gcc/aarch64-linux-gnu/12/include/stdint.h:
 
 /usr/include/aarch64-linux-gnu/bits/mathcalls-narrow.h:
@@ -2259,8 +2648,6 @@ Game/Game.cpp:
 /usr/include/c++/12/bits/locale_facets_nonio.tcc:
 
 /usr/include/c++/12/cmath:
-
-/usr/include/c++/12/stop_token:
 
 /usr/include/aarch64-linux-gnu/bits/types/struct_timespec.h:
 
@@ -2275,10 +2662,6 @@ Game/Game.cpp:
 /usr/include/opencv4/opencv2/flann/saving.h:
 
 /usr/include/c++/12/cfloat:
-
-/usr/include/SDL2/SDL_render.h:
-
-/usr/include/c++/12/bits/cxxabi_forced.h:
 
 /usr/include/SDL2/SDL_hidapi.h:
 
@@ -2350,79 +2733,15 @@ Game/PlayerScore.cpp:
 
 /usr/include/aarch64-linux-gnu/bits/libm-simd-decl-stubs.h:
 
-/usr/include/c++/12/ostream:
+/usr/include/SDL2/SDL_gamecontroller.h:
+
+/usr/include/c++/12/tr1/gamma.tcc:
+
+/usr/include/SDL2/SDL_metal.h:
+
+Game/Game.h:
 
 /usr/include/c++/12/tr1/beta_function.tcc:
-
-/usr/include/c++/12/bits/ios_base.h:
-
-/usr/include/aarch64-linux-gnu/bits/local_lim.h:
-
-/usr/include/c++/12/set:
-
-/usr/include/aarch64-linux-gnu/bits/uintn-identity.h:
-
-/usr/include/aarch64-linux-gnu/bits/time.h:
-
-/usr/include/c++/12/ext/atomicity.h:
-
-/usr/include/c++/12/bits/node_handle.h:
-
-/usr/include/c++/12/pstl/glue_algorithm_defs.h:
-
-/usr/include/aarch64-linux-gnu/c++/12/bits/gthr.h:
-
-/usr/include/c++/12/bits/std_mutex.h:
-
-/usr/include/opencv4/opencv2/flann/ground_truth.h:
-
-/usr/include/wctype.h:
-
-/usr/include/strings.h:
-
-/usr/include/aarch64-linux-gnu/bits/sched.h:
-
-/usr/include/time.h:
-
-/usr/include/aarch64-linux-gnu/bits/wctype-wchar.h:
-
-/usr/include/opencv4/opencv2/core/cuda.hpp:
-
-/usr/include/math.h:
-
-/usr/include/opencv4/opencv2/flann/flann_base.hpp:
-
-/usr/include/aarch64-linux-gnu/bits/types/struct_tm.h:
-
-/usr/include/aarch64-linux-gnu/bits/types/__fpos64_t.h:
-
-/usr/include/opencv4/opencv2/objdetect/face.hpp:
-
-/usr/include/aarch64-linux-gnu/bits/types/struct_itimerspec.h:
-
-/usr/include/c++/12/bits/locale_classes.h:
-
-/usr/include/aarch64-linux-gnu/bits/procfs-extra.h:
-
-/usr/include/c++/12/string:
-
-/usr/include/aarch64-linux-gnu/c++/12/bits/c++allocator.h:
-
-/usr/include/opencv4/opencv2/flann/all_indices.h:
-
-/usr/include/aarch64-linux-gnu/bits/procfs.h:
-
-/usr/include/c++/12/bits/new_allocator.h:
-
-/usr/include/c++/12/bits/ostream_insert.h:
-
-/usr/include/c++/12/bits/stl_function.h:
-
-/usr/include/SDL2/SDL_system.h:
-
-/usr/include/c++/12/bits/refwrap.h:
-
-/usr/include/c++/12/bits/range_access.h:
 
 /usr/include/c++/12/initializer_list:
 
@@ -2477,6 +2796,72 @@ Game/PlayerScore.cpp:
 /usr/include/aarch64-linux-gnu/bits/types/error_t.h:
 
 /usr/include/c++/12/bits/basic_string.tcc:
+
+/usr/include/semaphore.h:
+
+/usr/include/c++/12/iosfwd:
+
+Game/Game.cpp:
+
+/usr/include/c++/12/iostream:
+
+/usr/include/c++/12/ostream:
+
+/usr/include/aarch64-linux-gnu/c++/12/bits/c++config.h:
+
+/usr/include/c++/12/ios:
+
+/usr/include/c++/12/exception:
+
+/usr/include/c++/12/bits/exception_ptr.h:
+
+/usr/include/c++/12/bits/ios_base.h:
+
+/usr/include/aarch64-linux-gnu/bits/local_lim.h:
+
+/usr/include/c++/12/set:
+
+/usr/include/aarch64-linux-gnu/bits/uintn-identity.h:
+
+/usr/include/aarch64-linux-gnu/bits/time.h:
+
+/usr/include/c++/12/ext/atomicity.h:
+
+/usr/include/c++/12/bits/node_handle.h:
+
+/usr/include/c++/12/pstl/glue_algorithm_defs.h:
+
+/usr/include/aarch64-linux-gnu/c++/12/bits/gthr.h:
+
+/usr/include/c++/12/bits/std_mutex.h:
+
+/usr/include/opencv4/opencv2/flann/ground_truth.h:
+
+/usr/include/wctype.h:
+
+/usr/include/strings.h:
+
+/usr/include/aarch64-linux-gnu/bits/sched.h:
+
+/usr/include/time.h:
+
+/usr/include/aarch64-linux-gnu/bits/wctype-wchar.h:
+
+/usr/include/opencv4/opencv2/core/cuda.hpp:
+
+/usr/include/math.h:
+
+/usr/include/opencv4/opencv2/flann/flann_base.hpp:
+
+/usr/include/aarch64-linux-gnu/bits/types/struct_tm.h:
+
+/usr/include/aarch64-linux-gnu/bits/types/__fpos64_t.h:
+
+/usr/include/opencv4/opencv2/objdetect/face.hpp:
+
+/usr/include/aarch64-linux-gnu/bits/types/struct_itimerspec.h:
+
+/usr/include/c++/12/bits/locale_classes.h:
 
 /usr/include/c++/12/bits/locale_classes.tcc:
 
@@ -2674,9 +3059,9 @@ main.cpp:
 
 /usr/include/c++/12/bits/std_function.h:
 
-/usr/include/aarch64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
-
 /usr/include/c++/12/tuple:
+
+/usr/include/aarch64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
 
 /usr/include/c++/12/unordered_map:
 

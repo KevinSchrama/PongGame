@@ -17,6 +17,8 @@ public:
 
     void Update(float dt);
 
+    void SetSpeed(int newPosition);
+
     Vec2 position;
     Vec2 velocity;
     SDL_Rect rect{};

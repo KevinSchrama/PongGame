@@ -15,7 +15,7 @@ Game::Game() {
     renderer = SDL_CreateRenderer(window, -1, 0);
 
     // Initialize font
-    scoreFont = TTF_OpenFont("../Game/DejaVuSansMono.ttf", 40);
+    scoreFont = TTF_OpenFont(FONT_FILE, 40);
     if(scoreFont == NULL){
         std::cout << "Error initializing font: " << TTF_GetError() << std::endl;
     }
@@ -35,6 +35,9 @@ Game::Game() {
     paddleTwo = new Paddle(
             Vec2(WINDOW_WIDTH - 50.0f, (WINDOW_HEIGHT / 2.0f) - (PADDLE_HEIGHT / 2.0f)),
             Vec2(0.0f, 0.0f));
+
+    indicatorOne = new Indicator(Vec2(0.0f, 0.0f));
+    indicatorTwo = new Indicator(Vec2(0.0f, 0.0f));
 }
 
 Game::~Game() {
@@ -121,6 +124,24 @@ void Game::SetPaddleSpeed() {
     }
 }
 
+void Game::SetPaddleSpeed(controlPoints newPositions){
+    // Control paddle based on position on screen
+    if(newPositions.centroid1x < WINDOW_WIDTH/2 && newPositions.centroid2x < WINDOW_WIDTH/2){
+        paddleOne->SetSpeed(newPositions.centroid1y);
+    }else if(newPositions.centroid1x < WINDOW_WIDTH/2 && newPositions.centroid2x >= WINDOW_WIDTH/2){
+        paddleOne->SetSpeed(newPositions.centroid1y);
+        paddleTwo->SetSpeed(newPositions.centroid2y);
+    }else if(newPositions.centroid1x >= WINDOW_WIDTH/2 && newPositions.centroid2x >= WINDOW_WIDTH/2){
+        paddleTwo->SetSpeed(newPositions.centroid1y);
+    }else if(newPositions.centroid1x >= WINDOW_WIDTH/2 && newPositions.centroid2x < WINDOW_WIDTH/2){
+        paddleOne->SetSpeed(newPositions.centroid2y);
+        paddleTwo->SetSpeed(newPositions.centroid1y);
+    }
+
+    indicatorOne->Update(newPositions.centroid1x, newPositions.centroid1y);
+    indicatorTwo->Update(newPositions.centroid2x, newPositions.centroid2y);
+}
+
 void Game::UpdateGameObjects() {
     // Update the paddle positions
     paddleOne->Update(dt);
@@ -143,10 +164,10 @@ void Game::CheckCollisions() {
         ball->CollideWithWall(contact);
 
         if (contact.type == CollisionType::Left) {
-            ++playerTwoScore;
+            playerTwoScore++;
             playerTwoScoreText->SetScore(playerTwoScore);
         } else if (contact.type == CollisionType::Right) {
-            ++playerOneScore;
+            playerOneScore++;
             playerOneScoreText->SetScore(playerOneScore);
         }
     }
@@ -175,7 +196,14 @@ void Game::UpdateScreen() {
     playerOneScoreText->Draw();
     playerTwoScoreText->Draw();
 
+    indicatorOne->Draw(renderer);
+    indicatorTwo->Draw(renderer);
+
     SDL_RenderPresent(renderer);
+}
+
+void Game::SetTimeDelta(float dt){
+    this->dt = dt;
 }
 
 Contact Game::CheckPaddleCollision(Paddle* paddle){

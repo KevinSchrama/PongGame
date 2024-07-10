@@ -1,7 +1,8 @@
-CMakeFiles/PongGame.dir/Game/Ball.cpp.o: /home/pi/PongGame/Game/Ball.cpp \
- /usr/include/stdc-predef.h /home/pi/PongGame/Game/Ball.h \
- /usr/include/SDL2/SDL.h /usr/include/SDL2/SDL_main.h \
- /usr/include/SDL2/SDL_stdinc.h /usr/include/SDL2/SDL_config.h \
+CMakeFiles/PongGame.dir/Game/Indicator.cpp.o: \
+ /home/pi/PongGame/Game/Indicator.cpp /usr/include/stdc-predef.h \
+ /home/pi/PongGame/Game/Indicator.h /usr/include/SDL2/SDL.h \
+ /usr/include/SDL2/SDL_main.h /usr/include/SDL2/SDL_stdinc.h \
+ /usr/include/SDL2/SDL_config.h \
  /usr/include/aarch64-linux-gnu/SDL2/_real_SDL_config.h \
  /usr/include/SDL2/SDL_platform.h /usr/include/SDL2/begin_code.h \
  /usr/include/SDL2/close_code.h \

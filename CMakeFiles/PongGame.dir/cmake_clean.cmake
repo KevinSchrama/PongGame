@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/PongGame.dir/Game/Ball.cpp.o.d"
   "CMakeFiles/PongGame.dir/Game/Game.cpp.o"
   "CMakeFiles/PongGame.dir/Game/Game.cpp.o.d"
+  "CMakeFiles/PongGame.dir/Game/Indicator.cpp.o"
+  "CMakeFiles/PongGame.dir/Game/Indicator.cpp.o.d"
   "CMakeFiles/PongGame.dir/Game/Paddle.cpp.o"
   "CMakeFiles/PongGame.dir/Game/Paddle.cpp.o.d"
   "CMakeFiles/PongGame.dir/Game/PlayerScore.cpp.o"

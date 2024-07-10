@@ -14,6 +14,7 @@
 #include "Ball.h"
 #include "Paddle.h"
 #include "PlayerScore.h"
+#include "Indicator.h"
 #include "constants.h"
 
 
@@ -31,6 +32,9 @@ private:
     Paddle* paddleOne;
     Paddle* paddleTwo;
 
+    Indicator* indicatorOne;
+    Indicator* indicatorTwo;
+
     int playerOneScore = 0;
     int playerTwoScore = 0;
 
@@ -38,16 +42,6 @@ private:
     bool buttons[4] = {};
 
     float dt = 0.0f;
-
-    void CheckUserInput();
-
-    void SetPaddleSpeed();
-
-    void UpdateGameObjects();
-
-    void CheckCollisions();
-
-    void UpdateScreen();
 
     Contact CheckPaddleCollision(Paddle* paddle);
 
@@ -57,6 +51,19 @@ public:
     Game();
 
     ~Game();
+    
+    void CheckUserInput();
+
+    void SetPaddleSpeed();
+    void SetPaddleSpeed(controlPoints newPositions);
+
+    void SetTimeDelta(float dt);
+
+    void UpdateGameObjects();
+
+    void CheckCollisions();
+
+    void UpdateScreen();
 
     void Run();
 

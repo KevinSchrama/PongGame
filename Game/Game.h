@@ -43,6 +43,9 @@ private:
 
     float dt = 0.0f;
 
+    SDL_Texture* tex;
+    SDL_Rect bg_rect{};
+
     Contact CheckPaddleCollision(Paddle* paddle);
 
     Contact CheckWallCollision();

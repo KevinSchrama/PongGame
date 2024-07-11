@@ -38,6 +38,11 @@ Game::Game() {
 
     indicatorOne = new Indicator(Vec2(0.0f, 0.0f));
     indicatorTwo = new Indicator(Vec2(0.0f, 0.0f));
+
+    bg_rect.x = 0;
+    bg_rect.y = 0;
+    bg_rect.w = WINDOW_WIDTH;
+    bg_rect.h = WINDOW_HEIGHT;
 }
 
 Game::~Game() {
@@ -140,6 +145,11 @@ void Game::SetPaddleSpeed(controlPoints newPositions){
 
     indicatorOne->Update(newPositions.centroid1x, newPositions.centroid1y);
     indicatorTwo->Update(newPositions.centroid2x, newPositions.centroid2y);
+
+    tex = SDL_CreateTexture(
+        renderer, SDL_PIXELFORMAT_BGR24, SDL_TEXTUREACCESS_STREAMING, newPositions.image.cols,
+        newPositions.image.rows);
+    SDL_UpdateTexture(tex, NULL, (void*)newPositions.image.data, newPositions.image.step1());
 }
 
 void Game::UpdateGameObjects() {
@@ -176,6 +186,8 @@ void Game::CheckCollisions() {
 void Game::UpdateScreen() {
     SDL_SetRenderDrawColor(renderer, 0x0, 0x0, 0x0, 0xFF);
     SDL_RenderClear(renderer);
+
+    SDL_RenderCopy(renderer, tex, NULL, &bg_rect);
 
     SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
     for (int y = 0; y < WINDOW_HEIGHT; ++y)

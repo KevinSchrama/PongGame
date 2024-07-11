@@ -29,7 +29,7 @@ FixedQueue<bool, 1> queueToUpdateScreen;
 int quit;
 int debug;
 
-int hueValue = 50;
+int hueValue = 40;
 
 bool readQueue(queue<auto>* queueRead, auto* out){
     while(queueRead->empty()){
@@ -57,7 +57,7 @@ bool pollQueue(queue<auto>* queuePoll, auto* out){
 void* captureVideo(void *arg){
     cout << "Begin video capture" << endl;
     Mat image;
-    VideoCapture cap(0, CAP_V4L);
+    VideoCapture cap(-1, CAP_V4L);
 
     if (!cap.isOpened()){
         mtx.lock();
@@ -114,8 +114,8 @@ void* processVideo(void *arg){
 
         cvtColor(image, hsv, COLOR_RGB2HSV);
 
-        Scalar colorLower(hueValue, 80, 80); 
-        Scalar colorUpper(90, 255, 255);
+        Scalar colorLower(hueValue, 100, 90); 
+        Scalar colorUpper(90, 240, 255);
         inRange(hsv, colorLower, colorUpper, mask);
 
         vector<vector<Point>> contours;
@@ -159,6 +159,7 @@ void* processVideo(void *arg){
         sendPoints.centroid1y = centroid1.y;
         sendPoints.centroid2x = centroid2.x;
         sendPoints.centroid2y = centroid2.y;
+        addWeighted(image, 0.3, image, 0.0, 0.0, sendPoints.image);
 
         queuePosition.push(sendPoints);
 
@@ -293,54 +294,21 @@ void* updateGame(void *arg){
         game.UpdateGameObjects();
         game.CheckCollisions();
         game.UpdateScreen();
-        stopTime = std::chrono::high_resolution_clock::now();
-        static float time = std::chrono::duration<float, std::chrono::milliseconds::period>(stopTime - startTime).count();
-        static float dt = 100.0f;
-        game.SetTimeDelta(time);
         mtx.lock();
         cout << "Update Game " << time << endl;
         mtx.unlock();
         // this_thread::sleep_until(startTime + std::chrono::milliseconds(200));
-        // struct timespec timesleep = { 0, 100000000 };
-        // nanosleep(&timesleep, NULL);
+        struct timespec timesleep = { 0, 33000000 };
+        nanosleep(&timesleep, NULL);
+        stopTime = std::chrono::high_resolution_clock::now();
+        static float time = std::chrono::duration<float, std::chrono::milliseconds::period>(stopTime - startTime).count();
+        static float dt = 33.0f;
+        game.SetTimeDelta(time);
     }
     char* ret;
     strcpy(ret, "This is a test");
     pthread_exit(ret);
 }
-
-
-/*int main(int argc, char *argv[]) {
-    quit = false;
-    debug = false;
-
-    if(argc > 1){
-        if(strcmp(argv[1], "-d") == 0){
-            cout << "Debug on" << endl;
-            debug = true;
-        }
-    }
-
-    thread videoCaptureThread(captureVideo);
-    thread processVideoThread(processVideo);
-    // thread setPaddleSpeedThread(setPaddleSpeed, ref(game));
-    thread updateGameThread(updateGame);
-
-    // thread updateObjectsThread(updateObjects, ref(game));
-    // thread checkCollisionsThread(checkCollisions, ref(game));
-    // thread updateScreenThread(updateScreen, ref(game));
-
-    processVideoThread.join();
-    videoCaptureThread.join();
-    // setPaddleSpeedThread.join();
-    updateGameThread.join();
-
-    // updateObjectsThread.join();
-    // checkCollisionsThread.join();
-    // updateScreenThread.join();
-
-    return 0;
-}*/
 
 int main(int argc, char *argv[]) {
     quit = false;

@@ -6,6 +6,7 @@
 #define PONGGAME_CONSTANTS_H
 
 #include <string>
+#include <opencv2/opencv.hpp>
 
 const int WINDOW_WIDTH = 1280;
 const int WINDOW_HEIGHT = 720;
@@ -22,7 +23,7 @@ const int BALL_HEIGHT = 15;
 const int INDICATOR_WIDTH = 10;
 const int INDICATOR_HEIGHT = 10;
 
-const float BALL_SPEED = 0.3f;
+const float BALL_SPEED = 0.5f;
 
 #define FONT_FILE "Game/DejaVuSansMono.ttf"
 
@@ -55,6 +56,7 @@ struct controlPoints {
     int centroid1y;
     int centroid2x;
     int centroid2y;
+    cv::Mat image;
 };
 
 

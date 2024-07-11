@@ -1,3 +1,3 @@
-/home/pi/PongGame/CMakeFiles/PongGame.dir
-/home/pi/PongGame/CMakeFiles/edit_cache.dir
-/home/pi/PongGame/CMakeFiles/rebuild_cache.dir
+/home/kevin/PongGame/CMakeFiles/PongGame.dir
+/home/kevin/PongGame/CMakeFiles/edit_cache.dir
+/home/kevin/PongGame/CMakeFiles/rebuild_cache.dir

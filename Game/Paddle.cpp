@@ -29,6 +29,6 @@ void Paddle::Update(float dt) {
 
 void Paddle::SetSpeed(int newPosition){
     if(newPosition >= 0){
-        velocity.y = ((float)newPosition - position.y) * PADDLE_DIF;
+        velocity.y = ((float)newPosition - position.y - (PADDLE_HEIGHT/2)) * PADDLE_DIF;
     }
 }

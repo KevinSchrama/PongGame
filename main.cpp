@@ -196,7 +196,8 @@ void* processVideo(void *arg){
     pthread_exit(ret);
 }
 
-void setPaddleSpeed(Game& game){
+void* setPaddleSpeed(void *arg){
+    Game* game = (Game*) arg;
     // start in the middle of the screen
     controlPoints newPositions;
     newPositions.centroid1x = 0;
@@ -210,44 +211,40 @@ void setPaddleSpeed(Game& game){
             mtx.unlock();
         }
         mtxGame.lock();
-        game.SetPaddleSpeed(newPositions);
+        game->SetPaddleSpeed(newPositions);
         mtxGame.unlock();
         this_thread::sleep_for (std::chrono::milliseconds(1));
     }
+    pthread_exit(NULL);
 }
 
-void updateObjects(Game& game){
-    SDL_Event event;
+void* updateObjects(void *arg){
+    Game* game = (Game*) arg;
     while(!quit){
         mtxGame.lock();
-        game.UpdateGameObjects();
+        game->UpdateGameObjects();
         mtxGame.unlock();
         queueToCollisionCheck.push(false);
-        while (SDL_PollEvent(&event)) {
-            if (event.type == SDL_QUIT) {
-                quit = true;
-            }else if (event.type == SDL_KEYDOWN) {
-                if (event.key.keysym.sym == SDLK_ESCAPE) {
-                    quit = true;
-                }
-            }
-        }
         this_thread::sleep_for (std::chrono::milliseconds(25));
     }
+    pthread_exit(NULL);
 }
 
-void checkCollisions(Game& game){
+void* checkCollisions(void *arg){
+    Game* game = (Game*) arg;
     while(!quit){
         if(!readQueue(&queueToCollisionCheck, (bool*)nullptr)){
             break;
         }
         cout << "Check collision" << endl;
-        game.CheckCollisions();
+        game->CheckCollisions();
         queueToUpdateScreen.push(false);
     }
+    pthread_exit(NULL);
 }
 
-void updateScreen(Game& game){
+void* updateScreen(void *arg){
+    Game* game = (Game*) arg;
     auto startTime = std::chrono::high_resolution_clock::now();
     auto stopTime = std::chrono::high_resolution_clock::now();
     while(!quit){
@@ -255,11 +252,12 @@ void updateScreen(Game& game){
             break;
         }
         cout << "Update screen" << endl;
-        game.UpdateScreen();
+        game->UpdateScreen();
         stopTime = std::chrono::high_resolution_clock::now();
-        game.SetTimeDelta(std::chrono::duration<float, std::chrono::milliseconds::period>(stopTime - startTime).count());
+        game->SetTimeDelta(std::chrono::duration<float, std::chrono::milliseconds::period>(stopTime - startTime).count());
         startTime = std::chrono::high_resolution_clock::now();
     }
+    pthread_exit(NULL);
 }
 
 void* updateGame(void *arg){
@@ -313,15 +311,29 @@ void* updateGame(void *arg){
 int main(int argc, char *argv[]) {
     quit = false;
     debug = false;
+    bool gameOnly = false;
+    bool divided = false;
     pthread_t thread1;
     pthread_t thread2;
     pthread_t thread3;
+
+    pthread_t paddleSpeedThread;
+    pthread_t updateObjectsThread;
+    pthread_t checkCollisionsThread;
+    pthread_t updateScreenThread;
+
     void* ret;
 
     if(argc > 1){
         if(strcmp(argv[1], "-d") == 0){
             cout << "Debug on" << endl;
             debug = true;
+        }
+        if(strcmp(argv[1], "-g") == 0){
+            gameOnly = true;
+        }
+        if(strcmp(argv[1], "--div") == 0){
+            divided = true;
         }
         if(argc > 2){
             hueValue = atoi(argv[2]);
@@ -330,39 +342,103 @@ int main(int argc, char *argv[]) {
     
     cout << "Start threads" << endl;
 
-    if (pthread_create(&thread1, NULL, captureVideo, NULL) != 0) {
-        perror("pthread_create() error 1");
-        exit(1);
-    }
-    if (pthread_create(&thread2, NULL, processVideo, NULL) != 0) {
-        perror("pthread_create() error 2");
-        exit(1);
+    if(!gameOnly){
+        if (pthread_create(&thread1, NULL, captureVideo, NULL) != 0) {
+            perror("pthread_create() error 1");
+            exit(1);
+        }
+        if (pthread_create(&thread2, NULL, processVideo, NULL) != 0) {
+            perror("pthread_create() error 2");
+            exit(1);
+        }
     }
     if(!debug){
-        if (pthread_create(&thread3, NULL, updateGame, NULL) != 0) {
-            perror("pthread_create() error 3");
-            exit(1);
+        if(!divided){
+            if (pthread_create(&thread3, NULL, updateGame, NULL) != 0) {
+                perror("pthread_create() error 3");
+                exit(1);
+            }
+        }else{
+            static Game game;
+            if (pthread_create(&paddleSpeedThread, NULL, setPaddleSpeed, &game) != 0) {
+                perror("pthread_create() error paddle speed");
+                exit(1);
+            }
+            if (pthread_create(&updateObjectsThread, NULL, updateObjects, &game) != 0) {
+                perror("pthread_create() error update objects");
+                exit(1);
+            }
+            if (pthread_create(&checkCollisionsThread, NULL, checkCollisions, &game) != 0) {
+                perror("pthread_create() error check collisions");
+                exit(1);
+            }
+            if (pthread_create(&updateScreenThread, NULL, updateScreen, &game) != 0) {
+                perror("pthread_create() error check collisions");
+                exit(1);
+            }
         }
     }
 
     cout << "Set priority" << endl;
 
-    pthread_setschedprio(thread1, 1);
-    pthread_setschedprio(thread2, 1);
-    if(!debug) pthread_setschedprio(thread3, 1);
-
-    if (pthread_join(thread1, &ret) != 0) {
-        perror("pthread_join() error");
-        exit(3);
-    }
-    if (pthread_join(thread2, &ret) != 0) {
-        perror("pthread_join() error");
-        exit(3);
-    }
+    if(!gameOnly)pthread_setschedprio(thread1, 1);
+    if(!gameOnly)pthread_setschedprio(thread2, 1);
     if(!debug){
-        if (pthread_join(thread3, &ret) != 0) {
+        if(!divided){
+            pthread_setschedprio(thread3, 1);
+        }else{
+            pthread_setschedprio(paddleSpeedThread, 1);
+            pthread_setschedprio(updateObjectsThread, 1);
+            pthread_setschedprio(checkCollisionsThread, 1);
+            pthread_setschedprio(updateScreenThread, 1);
+        }
+    }
+
+    if(!gameOnly){
+        if (pthread_join(thread1, &ret) != 0) {
             perror("pthread_join() error");
             exit(3);
+        }
+        if (pthread_join(thread2, &ret) != 0) {
+            perror("pthread_join() error");
+            exit(3);
+        }
+    }
+    if(!debug){
+        if(!divided){
+            if (pthread_join(thread3, &ret) != 0) {
+                perror("pthread_join() error");
+                exit(3);
+            }
+        }else{
+            SDL_Event event;
+            while(!quit){
+                while (SDL_PollEvent(&event)) {
+                    if (event.type == SDL_QUIT) {
+                        quit = true;
+                    }else if (event.type == SDL_KEYDOWN) {
+                        if (event.key.keysym.sym == SDLK_ESCAPE) {
+                            quit = true;
+                        }
+                    }
+                }
+            }
+            if (pthread_join(paddleSpeedThread, &ret) != 0) {
+                perror("pthread_join() error paddle speed");
+                exit(1);
+            }
+            if (pthread_join(updateObjectsThread, &ret) != 0) {
+                perror("pthread_join() error update objects");
+                exit(1);
+            }
+            if (pthread_join(checkCollisionsThread, &ret) != 0) {
+                perror("pthread_join() error check collisions");
+                exit(1);
+            }
+            if (pthread_join(updateScreenThread, &ret) != 0) {
+                perror("pthread_join() error check collisions");
+                exit(1);
+            }
         }
     }
 

@@ -22,6 +22,7 @@ class Game {
 private:
     SDL_Window* window;
     SDL_Renderer* renderer;
+    SDL_GLContext context;
 
     TTF_Font* scoreFont;
 
@@ -69,6 +70,22 @@ public:
     void UpdateScreen();
 
     void Run();
+
+    SDL_Window* getWindow(){
+        return window;
+    }
+
+    SDL_GLContext getContext(){
+        return context;
+    }
+
+    int createContext(){
+        context = SDL_GL_CreateContext(window);
+        if(context == NULL){
+            return -1;
+        }
+        return 0;
+    }
 
 };
 

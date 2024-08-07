@@ -13,6 +13,7 @@ Game::Game() {
     // Setup window
     window = SDL_CreateWindow("Pong", 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
     renderer = SDL_CreateRenderer(window, -1, 0);
+    //context = SDL_GL_CreateContext(window);
 
     // Initialize font
     scoreFont = TTF_OpenFont(FONT_FILE, 40);

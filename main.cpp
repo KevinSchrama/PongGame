@@ -28,6 +28,7 @@ FixedQueue<bool, 1> queueToUpdateScreen;
 
 int quit;
 int debug;
+int processing;
 
 int hueValue = 40;
 
@@ -79,7 +80,7 @@ void* captureVideo(void *arg){
         }
         queueImage.push(smaller);
         mtx.lock();
-        cout << "Capture video | " << chrono::duration_cast<chrono::microseconds>(chrono::steady_clock::now() - startTime).count() << endl;
+        if(debug) cout << "Capture video | " << chrono::duration_cast<chrono::microseconds>(chrono::steady_clock::now() - startTime).count() << endl;
         mtx.unlock();
         // this_thread::sleep_until(startTime + std::chrono::milliseconds(33));
         // struct timespec time = {0,33000000};
@@ -163,14 +164,16 @@ void* processVideo(void *arg){
 
         queuePosition.push(sendPoints);
 
-        mtx.lock();
-        cout << "Process video " << endl;
-        cout << "Centroid 1: " << centroid1.y << endl;
-        cout << "Centroid 2: " << centroid2.y << endl;
-        // cout << "Duration: " << chrono::duration_cast<chrono::microseconds>(chrono::steady_clock::now() - begin).count() << endl;
-        mtx.unlock();
-
         if(debug){
+            mtx.lock();
+            cout << "Process video " << endl;
+            cout << "Centroid 1: " << centroid1.y << endl;
+            cout << "Centroid 2: " << centroid2.y << endl;
+            // cout << "Duration: " << chrono::duration_cast<chrono::microseconds>(chrono::steady_clock::now() - begin).count() << endl;
+            mtx.unlock();
+        }
+
+        if(processing){
             Mat imageSmall;
             cvtColor(mask, imageSmall, COLOR_GRAY2RGB);
             double a = 0.5;
@@ -207,7 +210,7 @@ void* setPaddleSpeed(void *arg){
     while(!quit){
         if(pollQueue(&queuePosition, &newPositions)){
             mtx.lock();
-            cout << "New position" << endl;
+            if(debug) cout << "New position" << endl;
             mtx.unlock();
         }
         mtxGame.lock();
@@ -221,11 +224,14 @@ void* setPaddleSpeed(void *arg){
 void* updateObjects(void *arg){
     Game* game = (Game*) arg;
     while(!quit){
+        mtx.lock();
+        if(debug) cout << "Update objects" << endl;
+        mtx.unlock();
         mtxGame.lock();
         game->UpdateGameObjects();
         mtxGame.unlock();
         queueToCollisionCheck.push(false);
-        this_thread::sleep_for (std::chrono::milliseconds(25));
+        this_thread::sleep_for (std::chrono::milliseconds(33));
     }
     pthread_exit(NULL);
 }
@@ -236,8 +242,12 @@ void* checkCollisions(void *arg){
         if(!readQueue(&queueToCollisionCheck, (bool*)nullptr)){
             break;
         }
-        cout << "Check collision" << endl;
+        mtx.lock();
+        if(debug) cout << "Check collision" << endl;
+        mtx.unlock();
+        mtxGame.lock();
         game->CheckCollisions();
+        mtxGame.unlock();
         queueToUpdateScreen.push(false);
     }
     pthread_exit(NULL);
@@ -251,10 +261,16 @@ void* updateScreen(void *arg){
         if(!readQueue(&queueToUpdateScreen, (bool*)nullptr)){
             break;
         }
-        cout << "Update screen" << endl;
+        mtx.lock();
+        if(debug) cout << "Update screen" << endl;
+        mtx.unlock();
+        mtxGame.lock();
         game->UpdateScreen();
+        mtxGame.unlock();
         stopTime = std::chrono::high_resolution_clock::now();
+        mtxGame.lock();
         game->SetTimeDelta(std::chrono::duration<float, std::chrono::milliseconds::period>(stopTime - startTime).count());
+        mtxGame.unlock();
         startTime = std::chrono::high_resolution_clock::now();
     }
     pthread_exit(NULL);
@@ -262,6 +278,7 @@ void* updateScreen(void *arg){
 
 void* updateGame(void *arg){
     Game game;
+
     SDL_Event event;
     auto startTime = std::chrono::high_resolution_clock::now();
     auto stopTime = std::chrono::high_resolution_clock::now();
@@ -272,6 +289,7 @@ void* updateGame(void *arg){
     newPositions.centroid2x = 0;
     newPositions.centroid2y = WINDOW_HEIGHT/2;
 
+    cout << "Start rendering loop" << endl;
     while(!quit){
         startTime = std::chrono::high_resolution_clock::now();
         while (SDL_PollEvent(&event)) {
@@ -285,7 +303,7 @@ void* updateGame(void *arg){
         }
         if(pollQueue(&queuePosition, &newPositions)){
             mtx.lock();
-            cout << "New position" << endl;
+            if(debug) cout << "New position" << endl;
             mtx.unlock();
         }
         game.SetPaddleSpeed(newPositions);
@@ -293,7 +311,7 @@ void* updateGame(void *arg){
         game.CheckCollisions();
         game.UpdateScreen();
         mtx.lock();
-        cout << "Update Game " << time << endl;
+        if(debug) cout << "Update Game " << time << endl;
         mtx.unlock();
         // this_thread::sleep_until(startTime + std::chrono::milliseconds(200));
         struct timespec timesleep = { 0, 33000000 };
@@ -335,6 +353,10 @@ int main(int argc, char *argv[]) {
         if(strcmp(argv[1], "--div") == 0){
             divided = true;
         }
+        if(strcmp(argv[1], "-p") == 0){
+            cout << "Show only video processing" << endl;
+            processing = true;
+        }
         if(argc > 2){
             hueValue = atoi(argv[2]);
         }
@@ -352,7 +374,7 @@ int main(int argc, char *argv[]) {
             exit(1);
         }
     }
-    if(!debug){
+    if(!processing){
         if(!divided){
             if (pthread_create(&thread3, NULL, updateGame, NULL) != 0) {
                 perror("pthread_create() error 3");
@@ -383,7 +405,7 @@ int main(int argc, char *argv[]) {
 
     if(!gameOnly)pthread_setschedprio(thread1, 1);
     if(!gameOnly)pthread_setschedprio(thread2, 1);
-    if(!debug){
+    if(!processing){
         if(!divided){
             pthread_setschedprio(thread3, 1);
         }else{
@@ -404,7 +426,7 @@ int main(int argc, char *argv[]) {
             exit(3);
         }
     }
-    if(!debug){
+    if(!processing){
         if(!divided){
             if (pthread_join(thread3, &ret) != 0) {
                 perror("pthread_join() error");
@@ -422,6 +444,8 @@ int main(int argc, char *argv[]) {
                         }
                     }
                 }
+                struct timespec timesleep = { 0, 11000000 };
+                nanosleep(&timesleep, NULL);
             }
             if (pthread_join(paddleSpeedThread, &ret) != 0) {
                 perror("pthread_join() error paddle speed");

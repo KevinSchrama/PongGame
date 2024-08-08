@@ -147,10 +147,10 @@ void Game::SetPaddleSpeed(controlPoints newPositions){
     indicatorOne->Update(newPositions.centroid1x, newPositions.centroid1y);
     indicatorTwo->Update(newPositions.centroid2x, newPositions.centroid2y);
 
-    tex = SDL_CreateTexture(
-        renderer, SDL_PIXELFORMAT_BGR24, SDL_TEXTUREACCESS_STREAMING, newPositions.image.cols,
-        newPositions.image.rows);
-    SDL_UpdateTexture(tex, NULL, (void*)newPositions.image.data, newPositions.image.step1());
+    // tex = SDL_CreateTexture(
+    //     renderer, SDL_PIXELFORMAT_BGR24, SDL_TEXTUREACCESS_STREAMING, newPositions.image.cols,
+    //     newPositions.image.rows);
+    // SDL_UpdateTexture(tex, NULL, (void*)newPositions.image.data, newPositions.image.step1());
 }
 
 void Game::UpdateGameObjects() {

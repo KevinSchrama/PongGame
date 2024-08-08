@@ -20,7 +20,7 @@ void Indicator::Draw(SDL_Renderer* renderer) {
     rect.x = static_cast<int>(position.x);
     rect.y = static_cast<int>(position.y);
 
-    SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0xFF);
+    SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0x00, 0xFF);
     SDL_RenderFillRect(renderer, &rect);
     SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 }

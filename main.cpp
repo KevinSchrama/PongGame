@@ -69,7 +69,9 @@ void* captureVideo(void *arg){
         exit(1);
     }
 
-    while(!quit){
+    auto startLoopTime = chrono::steady_clock::now();
+    int i = 0;
+    while(!quit && i < 1000){
         auto startTime = chrono::steady_clock::now();
         cap >> image;
         Mat smaller;
@@ -85,13 +87,12 @@ void* captureVideo(void *arg){
         // this_thread::sleep_until(startTime + std::chrono::milliseconds(33));
         // struct timespec time = {0,33000000};
         // nanosleep(&time, NULL);
+        i++;
     }
-
+    cout << "Mean time per loop for capture: " << (chrono::duration_cast<chrono::microseconds>(chrono::steady_clock::now() - startLoopTime).count())/1000 << endl;
     cout << "End video capture" << endl;
     cap.release();
-    char* ret;
-    strcpy(ret, "This is a test");
-    pthread_exit(ret);
+    pthread_exit(NULL);
 }
 
 void* processVideo(void *arg){
@@ -100,10 +101,13 @@ void* processVideo(void *arg){
     Mat hsv;
     Mat mask;
     chrono::steady_clock::time_point begin;
-    while(!quit){
+    int i = 0;
+    int total = 0;
+    while(!quit && i < 1000){
         if(!readQueue(&queueImage, &image)){
             break;
         }
+        auto startLoopTime = chrono::steady_clock::now();
         begin = chrono::steady_clock::now();
         if(image.empty()){
             cout << "empty video" << endl;
@@ -192,11 +196,12 @@ void* processVideo(void *arg){
                 break;
             }
         }
+        i++;
+        total += chrono::duration_cast<chrono::microseconds>(chrono::steady_clock::now() - startLoopTime).count();
     }
+    cout << "Mean time per loop for processing: " << (total)/1000 << endl;
     cout << "End video process" << endl;
-    char* ret;
-    strcpy(ret, "This is a test");
-    pthread_exit(ret);
+    pthread_exit(NULL);
 }
 
 void* setPaddleSpeed(void *arg){
@@ -290,7 +295,9 @@ void* updateGame(void *arg){
     newPositions.centroid2y = WINDOW_HEIGHT/2;
 
     cout << "Start rendering loop" << endl;
-    while(!quit){
+    int i = 0;
+    int total = 0;
+    while(!quit && i < 1000){
         startTime = std::chrono::high_resolution_clock::now();
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) {
@@ -301,6 +308,7 @@ void* updateGame(void *arg){
                 }
             }
         }
+        auto startLoopTime = chrono::steady_clock::now();
         if(pollQueue(&queuePosition, &newPositions)){
             mtx.lock();
             if(debug) cout << "New position" << endl;
@@ -310,6 +318,7 @@ void* updateGame(void *arg){
         game.UpdateGameObjects();
         game.CheckCollisions();
         game.UpdateScreen();
+        total += chrono::duration_cast<chrono::microseconds>(chrono::steady_clock::now() - startLoopTime).count();
         mtx.lock();
         if(debug) cout << "Update Game " << time << endl;
         mtx.unlock();
@@ -320,10 +329,10 @@ void* updateGame(void *arg){
         static float time = std::chrono::duration<float, std::chrono::milliseconds::period>(stopTime - startTime).count();
         static float dt = 33.0f;
         game.SetTimeDelta(time);
+        i++;
     }
-    char* ret;
-    strcpy(ret, "This is a test");
-    pthread_exit(ret);
+    cout << "Mean time per loop for game rendering: " << (total)/1000 << endl;
+    pthread_exit(NULL);
 }
 
 int main(int argc, char *argv[]) {

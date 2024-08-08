@@ -71,7 +71,7 @@ void* captureVideo(void *arg){
 
     auto startLoopTime = chrono::steady_clock::now();
     int i = 0;
-    while(!quit && i < 100){
+    while(!quit && i < 1000){
         auto startTime = chrono::steady_clock::now();
         cap >> image;
         Mat smaller;
@@ -89,7 +89,7 @@ void* captureVideo(void *arg){
         // nanosleep(&time, NULL);
         i++;
     }
-    cout << "Mean time per loop for capture: " << (chrono::duration_cast<chrono::microseconds>(chrono::steady_clock::now() - startLoopTime).count())/100 << endl;
+    cout << "Mean time per loop for capture: " << (chrono::duration_cast<chrono::microseconds>(chrono::steady_clock::now() - startLoopTime).count())/1000 << endl;
     cout << "End video capture" << endl;
     cap.release();
     pthread_exit(NULL);
@@ -103,7 +103,7 @@ void* processVideo(void *arg){
     chrono::steady_clock::time_point begin;
     int i = 0;
     int total = 0;
-    while(!quit && i < 100){
+    while(!quit && i < 1000){
         if(!readQueue(&queueImage, &image)){
             break;
         }
@@ -199,7 +199,7 @@ void* processVideo(void *arg){
         i++;
         total += chrono::duration_cast<chrono::microseconds>(chrono::steady_clock::now() - startLoopTime).count();
     }
-    cout << "Mean time per loop for processing: " << (total)/100 << endl;
+    cout << "Mean time per loop for processing: " << (total)/1000 << endl;
     cout << "End video process" << endl;
     pthread_exit(NULL);
 }
@@ -297,7 +297,7 @@ void* updateGame(void *arg){
     cout << "Start rendering loop" << endl;
     int i = 0;
     int total = 0;
-    while(!quit && i < 100){
+    while(!quit && i < 1000){
         startTime = std::chrono::high_resolution_clock::now();
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) {
@@ -331,7 +331,7 @@ void* updateGame(void *arg){
         game.SetTimeDelta(time);
         i++;
     }
-    cout << "Mean time per loop for game rendering: " << (total)/100 << endl;
+    cout << "Mean time per loop for game rendering: " << (total)/1000 << endl;
     pthread_exit(NULL);
 }
 

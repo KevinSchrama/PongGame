@@ -324,7 +324,7 @@ void* updateGame(void *arg){
         mtx.unlock();
         // this_thread::sleep_until(startTime + std::chrono::milliseconds(200));
         struct timespec timesleep = { 0, 33000000 };
-        nanosleep(&timesleep, NULL);
+        //nanosleep(&timesleep, NULL);
         stopTime = std::chrono::high_resolution_clock::now();
         static float time = std::chrono::duration<float, std::chrono::milliseconds::period>(stopTime - startTime).count();
         static float dt = 33.0f;
